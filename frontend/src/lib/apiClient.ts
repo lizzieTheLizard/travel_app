@@ -1,11 +1,28 @@
 import axios, { AxiosInstance } from 'axios';
 
+function getApiUrl(): string {
+  // Try to get from window for client-side
+  if (typeof window !== 'undefined') {
+    // Check localStorage or window object first
+    const stored = typeof localStorage !== 'undefined' ? localStorage.getItem('apiUrl') : null;
+    if (stored) return stored;
+  }
+  
+  // Check environment variable
+  if (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_API_URL) {
+    return process.env.NEXT_PUBLIC_API_URL;
+  }
+  
+  // Fallback to backend URL
+  return 'https://travelapp-backend-production-a064.up.railway.app';
+}
+
 export class ApiClient {
   private baseURL: string;
   private client: AxiosInstance;
 
-  constructor(baseURL: string = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001') {
-    this.baseURL = baseURL;
+  constructor(baseURL?: string) {
+    this.baseURL = baseURL || getApiUrl();
     this.client = axios.create({
       baseURL: this.baseURL,
       headers: {
