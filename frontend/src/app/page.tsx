@@ -56,7 +56,7 @@ export default function Home() {
             </li>
             <li className="flex items-start">
               <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">2</span>
-              <span>Add cities you'll be visiting</span>
+              <span>Add cities you&apos;ll be visiting</span>
             </li>
             <li className="flex items-start">
               <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0">3</span>
