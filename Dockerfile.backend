@@ -2,14 +2,21 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+# Copy package files
 COPY backend/package*.json ./
 
+# Install dependencies
 RUN npm install
 
-COPY backend/src src
-COPY backend/tsconfig.json tsconfig.json
+# Copy source code and config
+COPY backend/src ./src
+COPY backend/tsconfig.json .
 
+# Build TypeScript
 RUN npm run build
+
+# Remove source files to save space
+RUN rm -rf src
 
 EXPOSE 3001
 

@@ -61,6 +61,12 @@ travel_app/
 
 ## Getting Started
 
+### Quick Deploy (Free)
+
+**Easiest way to get live**: Vercel + Render + MongoDB Atlas
+- See [DEPLOYMENT_VERCEL_RENDER.md](docs/DEPLOYMENT_VERCEL_RENDER.md)
+- Takes 10 minutes, $0/month
+
 ### Prerequisites
 - Node.js 18+
 - MongoDB
