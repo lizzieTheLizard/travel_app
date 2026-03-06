@@ -18,10 +18,6 @@ COPY tsconfig.json .
 # Build TypeScript
 RUN npm run build
 
-# prepare tsconfig for runtime so paths point at compiled files
-RUN cp tsconfig.json dist/tsconfig.json \
-    && sed -i 's/"src\//"dist\//g' dist/tsconfig.json
-
 # Remove source files to save space
 RUN rm -rf src
 
