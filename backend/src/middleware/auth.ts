@@ -8,7 +8,7 @@ declare global {
   }
 }
 
-export middleware = async (
+export const middleware = async (
   req: Request,
   res: Response,
   next: NextFunction
