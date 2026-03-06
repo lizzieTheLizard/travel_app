@@ -1,6 +1,6 @@
-import { Task } from '@/models/Task';
-import { Flight } from '@/models/Flight';
-import { Accommodation } from '@/models/Accommodation';
+import { Task } from '../models/Task';
+import { Flight } from '../models/Flight';
+import { Accommodation } from '../models/Accommodation';
 import mongoose from 'mongoose';
 
 interface TaskSuggestion {

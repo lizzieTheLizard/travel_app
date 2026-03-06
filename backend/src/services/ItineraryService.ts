@@ -1,10 +1,10 @@
-import { Trip } from '@/models/Trip';
-import { Flight } from '@/models/Flight';
-import { Accommodation } from '@/models/Accommodation';
-import { Transportation } from '@/models/Transportation';
-import { Activity } from '@/models/Activity';
-import { Task } from '@/models/Task';
-import { DayItinerary } from '@/types';
+import { Trip } from '../models/Trip';
+import { Flight } from '../models/Flight';
+import { Accommodation } from '../models/Accommodation';
+import { Transportation } from '../models/Transportation';
+import { Activity } from '../models/Activity';
+import { Task } from '../models/Task';
+import { DayItinerary } from '../types';
 import mongoose from 'mongoose';
 
 export class ItineraryService {

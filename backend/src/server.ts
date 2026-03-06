@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import { errorHandler, logger } from '@/middleware/errorHandler';
+import { errorHandler, logger } from './middleware/errorHandler';
 import rateLimit from 'express-rate-limit';
 
 dotenv.config();

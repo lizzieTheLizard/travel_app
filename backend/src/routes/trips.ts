@@ -1,7 +1,7 @@
 import { Router, Request, Response } from 'express';
-import { Trip } from '@/models/Trip';
-import { ItineraryService } from '@/services/ItineraryService';
-import { TaskSuggestionService } from '@/services/TaskSuggestionService';
+import { Trip } from '../models/Trip';
+import { ItineraryService } from '../services/ItineraryService';
+import { TaskSuggestionService } from '../services/TaskSuggestionService';
 
 const router = Router();
 const itineraryService = new ItineraryService();
