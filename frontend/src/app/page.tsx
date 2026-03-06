@@ -1,5 +1,7 @@
 'use client';
 
+import TestConnection from '@/components/TestConnection';
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
@@ -72,6 +74,8 @@ export default function Home() {
             </li>
           </ol>
         </div>
+
+        <TestConnection />
       </div>
     </main>
   );
