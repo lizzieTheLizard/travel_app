@@ -1,5 +1,8 @@
 FROM node:18-alpine
 
+# force cache bust when build context changes
+ARG CACHEBUST=1
+
 WORKDIR /app
 
 # Copy package files
