@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
-    "start": "node -r tsconfig-paths/register dist/server.js",
+    "start": "TS_CONFIG_PATH=dist/tsconfig.json node -r tsconfig-paths/register dist/server.js",
     "lint": "eslint src --ext .ts",
     "type-check": "tsc --noEmit"
   },
