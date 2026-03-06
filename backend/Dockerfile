@@ -18,6 +18,8 @@ RUN npm run build
 # Remove source files to save space
 RUN rm -rf src
 
+# Expose the port your app listens on (Railway sets PORT env variable, often 8080)
 EXPOSE 3001
+EXPOSE 8080
 
 CMD ["npm", "start"]
