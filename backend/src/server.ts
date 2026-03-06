@@ -27,8 +27,9 @@ const connectDB = async () => {
     await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/travel_app');
     logger.info('MongoDB connected');
   } catch (error) {
+    // Log error but don't crash; allow server to start for health checks
     logger.error('MongoDB connection error:', error);
-    process.exit(1);
+    logger.warn('Proceeding without DB connection; some features may not work.');
   }
 };
 
