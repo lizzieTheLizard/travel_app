@@ -2,21 +2,21 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Copy package files
+# Copy package files from backend directory
 COPY backend/package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm ci --only=production && npm install --save-dev typescript
 
 # Copy source code and config
 COPY backend/src ./src
-COPY backend/tsconfig.json .
+COPY backend/tsconfig.json ./
 
 # Build TypeScript
 RUN npm run build
 
-# Remove source files to save space
-RUN rm -rf src
+# Keep production dependencies only
+RUN npm prune --production
 
 EXPOSE 3001
 
