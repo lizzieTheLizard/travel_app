@@ -1,4 +1,6 @@
 import { Task } from '@/models/Task';
+import { Flight } from '@/models/Flight';
+import { Accommodation } from '@/models/Accommodation';
 import mongoose from 'mongoose';
 
 interface TaskSuggestion {
@@ -10,28 +12,28 @@ interface TaskSuggestion {
 export class TaskSuggestionService {
   async generateSuggestedTasks(tripId: string): Promise<TaskSuggestion[]> {
     const suggestions: TaskSuggestion[] = [];
-    const objectId = new mongoose.Types.ObjectId(tripId);
 
     try {
       // Check for flights
-      const flights = await this.getFlightsByTripId(tripId);
+      const flights = await Flight.find({ tripId: new mongoose.Types.ObjectId(tripId) });
       if (flights.length > 0) {
+        const firstFlight = flights[0];
         suggestions.push(
           {
             title: 'Check in online for flights',
             category: 'preparation',
-            dueDate: new Date(flights[0].departureTime.getTime() - 24 * 60 * 60 * 1000),
+            dueDate: new Date(firstFlight.departureTime.getTime() - 24 * 60 * 60 * 1000),
           },
           {
             title: 'Download boarding passes',
             category: 'preparation',
-            dueDate: new Date(flights[0].departureTime.getTime() - 12 * 60 * 60 * 1000),
+            dueDate: new Date(firstFlight.departureTime.getTime() - 12 * 60 * 60 * 1000),
           }
         );
       }
 
       // Check for accommodation
-      const accommodations = await this.getAccommodationsByTripId(tripId);
+      const accommodations = await Accommodation.find({ tripId: new mongoose.Types.ObjectId(tripId) });
       if (accommodations.length > 0) {
         accommodations.forEach((acc) => {
           suggestions.push({
@@ -88,15 +90,5 @@ export class TaskSuggestionService {
     } catch (error) {
       console.error('Error creating suggested tasks:', error);
     }
-  }
-
-  private async getFlightsByTripId(tripId: string) {
-    // TODO: Import and use Flight model
-    return [];
-  }
-
-  private async getAccommodationsByTripId(tripId: string) {
-    // TODO: Import and use Accommodation model
-    return [];
   }
 }
