@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import { errorHandler, logger } from './middleware/errorHandler';
 import rateLimit from 'express-rate-limit';
+import tripRoutes from './routes/trips';
 
 dotenv.config();
 
@@ -34,7 +35,7 @@ const connectDB = async () => {
 };
 
 // Routes (to be implemented)
-// app.use('/api/trips', tripRoutes);
+app.use('/api/trips', tripRoutes);
 // app.use('/api/flights', flightRoutes);
 // app.use('/api/accommodations', accommodationRoutes);
 // app.use('/api/auth', authRoutes);
