@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js",
+    "start": "node -r tsconfig-paths/register dist/server.js",
     "lint": "eslint src --ext .ts",
     "type-check": "tsc --noEmit"
   },
@@ -22,7 +22,8 @@
     "googleapis": "^118.0.0",
     "zod": "^3.22.0",
     "winston": "^3.10.0",
-    "express-rate-limit": "^7.0.0"
+    "express-rate-limit": "^7.0.0",
+    "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
     "typescript": "^5.2.0",
