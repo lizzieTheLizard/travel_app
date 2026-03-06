@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { apiClient } from '@/lib/apiClient';
 
 export default function TestConnection() {
@@ -9,6 +9,13 @@ export default function TestConnection() {
     success: boolean;
     message: string;
   } | null>(null);
+  const [apiUrl, setApiUrl] = useState<string>('');
+
+  useEffect(() => {
+    // Display the API URL being used
+    const url = (apiClient as any).baseURL;
+    setApiUrl(url);
+  }, []);
 
   const handleTest = async () => {
     setLoading(true);
@@ -34,6 +41,10 @@ export default function TestConnection() {
   return (
     <div className="mt-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
       <h3 className="text-lg font-semibold text-gray-900 mb-4">Test Backend Connection</h3>
+      <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded text-sm text-blue-800">
+        <p><strong>API URL being used:</strong></p>
+        <p className="font-mono text-xs break-all">{apiUrl}</p>
+      </div>
       <button
         onClick={handleTest}
         disabled={loading}
